@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pregunta 5</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #e8f5e9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .cabecera {
+      width: 80%;
+      max-width: 600px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .opcion {
+      background-color: #ffd54f;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 15px;
+      cursor: pointer;
+      width: 250px;
+      box-shadow: 2px 2px 5px #aaa;
+      transition: background-color 0.3s;
+    }
+
+    .opcion:hover {
+      background-color: #ffca28;
+    }
+
+    .correcta {
+      background-color: #a5d6a7 !important;
+    }
+
+    .incorrecta {
+      background-color: #ef9a9a !important;
+    }
+
+    .feedback {
+      font-size: 1.3em;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .zizi-mini {
+      width: 50px;
+      height: auto;
+    }
+
+    .siguiente {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #a5d6a7;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .siguiente:hover {
+      background-color: #81c784;
+    }
+  </style>
+  <script>
+    function responder(opcion) {
+      const correcta = 'c';
+      const feedback = document.getElementById('feedback');
+      feedback.innerHTML = '';
+
+      if (opcion === correcta) {
+        document.getElementById(opcion).classList.add('correcta');
+        const texto = document.createElement('span');
+        texto.textContent = '¡Muy bien, Nanu! 🌟';
+
+        const zizi = document.createElement('img');
+        zizi.src = 'Zizi.png';
+        zizi.alt = 'Zizi feliz';
+        zizi.className = 'zizi-mini';
+
+        feedback.appendChild(zizi);
+        feedback.appendChild(texto);
+        document.getElementById('siguiente').style.display = 'inline-block';
+      } else {
+        document.getElementById(opcion).classList.add('incorrecta');
+        feedback.textContent = 'Ups... esa no era 😅';
+      }
+
+      const opciones = document.getElementsByClassName('opcion');
+      for (let i = 0; i < opciones.length; i++) {
+        opciones[i].onclick = null;
+      }
+    }
+  </script>
+</head>
+<body>
+  <img src="autotrofos.jpg" alt="Planta autótrofa" class="cabecera">
+  <h2>Los autótrofos...</h2>
+
+  <div id="a" class="opcion" onclick="responder('a')">a) Se alimentan de otros seres vivos</div>
+  <div id="b" class="opcion" onclick="responder('b')">b) Andan en autos</div>
+  <div id="c" class="opcion" onclick="responder('c')">c) Producen su propio alimento</div>
+  <div id="d" class="opcion" onclick="responder('d')">d) Son herbívoros</div>
+
+  <div id="feedback" class="feedback"></div>
+  <button id="siguiente" class="siguiente" onclick="window.location.href='pregunta6.html'">Siguiente</button>
+</body>
+</html>

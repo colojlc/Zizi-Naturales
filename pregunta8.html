@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pregunta 8</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #fffbe6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .cabecera {
+      width: 250px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .bloque {
+      margin-bottom: 20px;
+    }
+
+    .opcion {
+      background-color: #ffd54f;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 15px;
+      cursor: pointer;
+      width: 240px;
+      box-shadow: 2px 2px 5px #aaa;
+      transition: background-color 0.3s;
+    }
+
+    .opcion:hover {
+      background-color: #ffca28;
+    }
+
+    .correcta {
+      background-color: #a5d6a7 !important;
+    }
+
+    .incorrecta {
+      background-color: #ef9a9a !important;
+    }
+
+    .feedback {
+      font-size: 1.2em;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .zizi-mini {
+      width: 50px;
+      height: auto;
+    }
+
+    .siguiente {
+      font-size: 1.1em;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #a5d6a7;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .siguiente:hover {
+      background-color: #81c784;
+    }
+  </style>
+  <script>
+    let primeraCorrecta = false;
+    let segundaCorrecta = false;
+
+    function responder(pregunta, opcion) {
+      const feedback = document.getElementById('feedback');
+      const opciones = document.querySelectorAll('.' + pregunta + ' .opcion');
+      opciones.forEach(op => op.onclick = null);
+
+      if ((pregunta === 'p1' && opcion === 'a') || (pregunta === 'p2' && opcion === 'c')) {
+        document.getElementById(pregunta + opcion).classList.add('correcta');
+        if (pregunta === 'p1') primeraCorrecta = true;
+        if (pregunta === 'p2') segundaCorrecta = true;
+      } else {
+        document.getElementById(pregunta + opcion).classList.add('incorrecta');
+      }
+
+      if (primeraCorrecta && segundaCorrecta) {
+        feedback.innerHTML = '';
+        const texto = document.createElement('span');
+        texto.textContent = '¡Muy bien, Nanu! 🌟';
+
+        const zizi = document.createElement('img');
+        zizi.src = 'Zizi.png';
+        zizi.alt = 'Zizi feliz';
+        zizi.className = 'zizi-mini';
+
+        feedback.appendChild(zizi);
+        feedback.appendChild(texto);
+        document.getElementById('siguiente').style.display = 'inline-block';
+      }
+    }
+  </script>
+</head>
+<body>
+  <img src="avestruz.gif" alt="Avestruz curioso" class="cabecera">
+
+  <div class="bloque p1">
+    <h2>Este animal es:</h2>
+    <div id="p1a" class="opcion" onclick="responder('p1','a')">a) Vertebrado</div>
+    <div id="p1b" class="opcion" onclick="responder('p1','b')">b) Invertebrado</div>
+  </div>
+
+  <div class="bloque p2">
+    <h2>La clasificarías como:</h2>
+    <div id="p2a" class="opcion" onclick="responder('p2','a')">a) Mamífero</div>
+    <div id="p2b" class="opcion" onclick="responder('p2','b')">b) Artrópodo</div>
+    <div id="p2c" class="opcion" onclick="responder('p2','c')">c) Ave</div>
+  </div>
+
+  <div id="feedback" class="feedback"></div>
+  <button id="siguiente" class="siguiente" onclick="window.location.href='pregunta9.html'">Siguiente</button>
+</body>
+</html>

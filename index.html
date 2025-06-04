@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bienvenida</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top, #d0f4f7, #a0e0a0);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin: 20px;
+    }
+
+    .zizi-img {
+      width: 350px;
+      height: auto;
+      margin: 20px auto;
+      animation: flotarDesdeAbajo 2s ease-out;
+    }
+
+    button {
+      font-size: 1.5em;
+      padding: 15px 30px;
+      background-color: #ffb74d;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px #999;
+      animation: aparecer 2s ease 1.5s forwards;
+      opacity: 0;
+    }
+
+    button:hover {
+      background-color: #ffa726;
+    }
+
+    @keyframes flotarDesdeAbajo {
+      0% {
+        opacity: 0;
+        transform: translateY(100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes aparecer {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>¡Hola, Nanu!</h1>
+  <img src="Zizi.png" alt="Zizi la mascota" class="zizi-img">
+  <p>Yo soy Zizi, tu guía en esta aventura. Vamos a aprender y jugar con los seres vivos. ¡Empecemos!</p>
+  <button onclick="window.location.href='pregunta1.html'">¡Empezar!</button>
+</body>
+</html>

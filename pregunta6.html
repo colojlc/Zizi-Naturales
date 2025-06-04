@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pregunta 6</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #f3f7ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .cabecera {
+      width: 90%;
+      max-width: 700px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      font-size: 1em;
+      padding: 5px;
+      width: 150px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      text-align: center;
+      margin: 5px;
+    }
+
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin-top: 15px;
+      background-color: #4fc3f7;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #29b6f6;
+    }
+
+    .feedback {
+      font-size: 1.3em;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .zizi-mini {
+      width: 50px;
+      height: auto;
+    }
+
+    .siguiente {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #a5d6a7;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .siguiente:hover {
+      background-color: #81c784;
+    }
+  </style>
+  <script>
+    function verificarRespuestas() {
+      const r1 = document.getElementById('r1').value.trim().toLowerCase();
+      const r2 = document.getElementById('r2').value.trim().toLowerCase();
+      const r3 = document.getElementById('r3').value.trim().toLowerCase();
+      const r4 = document.getElementById('r4').value.trim().toLowerCase();
+
+      const feedback = document.getElementById('feedback');
+      feedback.innerHTML = '';
+
+      if (r1 === 'crecen' && r2 === 'reproducen' && ((r3 === 'alimentan' && r4 === 'relacionan') || (r3 === 'relacionan' && r4 === 'alimentan'))) {
+        const texto = document.createElement('span');
+        texto.textContent = '¡Muy bien, Nanu! 🌟';
+
+        const zizi = document.createElement('img');
+        zizi.src = 'Zizi.png';
+        zizi.alt = 'Zizi feliz';
+        zizi.className = 'zizi-mini';
+
+        feedback.appendChild(zizi);
+        feedback.appendChild(texto);
+        document.getElementById('siguiente').style.display = 'inline-block';
+      } else {
+        feedback.textContent = 'Ups... alguna palabra está mal. Intentá de nuevo 😊';
+      }
+    }
+  </script>
+</head>
+<body>
+  <img src="seresvivos.jpg" alt="Selva llena de seres vivos" class="cabecera">
+  <h2>Los seres vivos...</h2>
+  <p>
+    1) Nacen<br>
+    2) <input type="text" id="r1" placeholder="..."><br>
+    3) Se <input type="text" id="r2" placeholder="..."><br>
+    4) Se <input type="text" id="r3" placeholder="..."><br>
+    5) Se mueven<br>
+    6) Se <input type="text" id="r4" placeholder="..."><br>
+    7) Mueren
+  </p>
+  <button onclick="verificarRespuestas()">Verificar</button>
+
+  <div id="feedback" class="feedback"></div>
+  <button id="siguiente" class="siguiente" onclick="window.location.href='pregunta7.html'">Siguiente</button>
+</body>
+</html>

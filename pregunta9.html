@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pregunta 9</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #e8f5e9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+
+    table {
+      margin-top: 20px;
+      border-spacing: 15px;
+    }
+
+    td {
+      font-size: 1.2em;
+    }
+
+    select {
+      font-size: 1em;
+      padding: 5px;
+      border-radius: 8px;
+    }
+
+    button {
+      font-size: 1.1em;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #4fc3f7;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #29b6f6;
+    }
+
+    .feedback {
+      font-size: 1.3em;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .zizi-mini {
+      width: 50px;
+      height: auto;
+    }
+
+    .siguiente {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #a5d6a7;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .siguiente:hover {
+      background-color: #81c784;
+    }
+  </style>
+  <script>
+    function verificar() {
+      const moluscos = document.getElementById('moluscos').value;
+      const mamiferos = document.getElementById('mamiferos').value;
+      const invertebrados = document.getElementById('invertebrados').value;
+
+      const feedback = document.getElementById('feedback');
+      feedback.innerHTML = '';
+
+      if (
+        moluscos === 'blandos' &&
+        mamiferos === 'leche' &&
+        invertebrados === 'no_columna'
+      ) {
+        const texto = document.createElement('span');
+        texto.textContent = '¡Muy bien, Nanu! 🌟';
+        const zizi = document.createElement('img');
+        zizi.src = 'Zizi.png';
+        zizi.alt = 'Zizi feliz';
+        zizi.className = 'zizi-mini';
+        feedback.appendChild(zizi);
+        feedback.appendChild(texto);
+        document.getElementById('siguiente').style.display = 'inline-block';
+      } else {
+        feedback.textContent = 'Ups... fijate bien las características 😊';
+      }
+    }
+  </script>
+</head>
+<body>
+  <img src="vamosnanu.jpg" alt="Vamos Nanu" style="width: 300px; margin-bottom: 10px; border-radius: 20px;">
+  <h2>Uní cada grupo con su característica:</h2>
+  <table>
+    <tr>
+      <td>Moluscos →</td>
+      <td>
+        <select id="moluscos">
+          <option value="">Elegí una opción</option>
+          <option value="columna">Tienen columna vertebral</option>
+          <option value="leche">Nacen del vientre de la madre y se alimentan con leche materna</option>
+          <option value="no_columna">No tienen columna vertebral</option>
+          <option value="blandos">Acuáticos o terrestres, son blandos y algunos tienen cubierta dura.</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Mamíferos →</td>
+      <td>
+        <select id="mamiferos">
+          <option value="">Elegí una opción</option>
+          <option value="columna">Tienen columna vertebral</option>
+          <option value="leche">Nacen del vientre de la madre y se alimentan con leche materna</option>
+          <option value="no_columna">No tienen columna vertebral</option>
+          <option value="blandos">Acuáticos o terrestres, son blandos y algunos tienen cubierta dura.</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Invertebrados →</td>
+      <td>
+        <select id="invertebrados">
+          <option value="">Elegí una opción</option>
+          <option value="columna">Tienen columna vertebral</option>
+          <option value="leche">Nacen del vientre de la madre y se alimentan con leche materna</option>
+          <option value="no_columna">No tienen columna vertebral</option>
+          <option value="blandos">Acuáticos o terrestres, son blandos y algunos tienen cubierta dura.</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+  <button onclick="verificar()">Verificar</button>
+
+  <div id="feedback" class="feedback"></div>
+  <button id="siguiente" class="siguiente" onclick="window.location.href='final.html'">Finalizar</button>
+</body>
+</html>
